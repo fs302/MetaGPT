@@ -1,0 +1,20 @@
+
+sequenceDiagram
+    participant M as Main
+    participant S as Server
+    participant P as Preprocessor
+    participant MD as Model
+    M->>S: run_server()
+    S->>S: start()
+    loop Prediction Request
+        S->>P: preprocess_sql(sql_query)
+        P-->>S: return DataFrame
+        S->>MD: predict(DataFrame)
+        MD-->>S: return prediction
+    end
+    loop Classification Request
+        S->>P: preprocess_sql(sql_query)
+        P-->>S: return DataFrame
+        S->>MD: classify(DataFrame)
+        MD-->>S: return classification
+    end

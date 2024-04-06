@@ -163,7 +163,7 @@ examples/image__vector_store.json
 examples/index_store.json
 .chroma
 *~$*
-workspace/*
+#workspace/*
 tmp
 metagpt/roles/idea_agent.py
 .aider*

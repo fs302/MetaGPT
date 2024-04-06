@@ -1,0 +1,28 @@
+
+classDiagram
+    class Main {
+        +run_server() void
+    }
+    class Server {
+        +app Flask
+        +start() void
+        +predict_cpu_cost(sql_query: str) str
+        +classify_query(sql_query: str) str
+    }
+    class Model {
+        -model sklearnModel
+        +train(X: DataFrame, y: Series) void
+        +predict(X: DataFrame) Series
+        +classify(X: DataFrame) Series
+    }
+    class Preprocessor {
+        +preprocess_sql(sql_query: str) DataFrame
+    }
+    class Config {
+        +DB_CONNECTION_STRING str
+        +MODEL_PATH str
+    }
+    Main --> Server
+    Server --> Model
+    Server --> Preprocessor
+    Model --> Preprocessor
